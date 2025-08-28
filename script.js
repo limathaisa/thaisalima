@@ -1,77 +1,37 @@
-const catalogo = document.getElementById("catalogo");
-// Exemplo AJAX
-
-        const cepIpt = document.querySelector("#cep")
-        function carregaEndereco(){
-            if(this.readyState == 4 && this.status == 200) {
-                const resposta = JSON.parse(this.responseText)
-                console.log("Resposta está pronta e está ok")
-                console.log(resposta);
-                //carregando a resposta no DOM
-                const enderecoDiv = document.querySelector("#catalogo")
-                catalogoDiv.innerHTML = resposta.logradouro      
-            }
-        }
-        cepIpt.addEventListener("change", () => {
-            let filmeDesejado = cepIpt.value
-            let url = `https://viacep.com.br/ws/${filmeDesejado}/json/`
-            //criar o objeto XMLHTTPRequest
-            const objetoHTTPRequest = new XMLHttpRequest()
-            //Configurar a requisição
-            objetoHTTPRequest.open("GET", url)
-            //Enviar a requisição
-            objetoHTTPRequest.send()
-            //Esperar a resposta ficar pronta
-            objetoHTTPRequest.onreadystatechange = carregaEndereco
-           
-        })  
-  
-
- 
+const produtos = [
+  { id: 1, nome: "Mouse", preco: 59.9, quantidade: 12 },
+  { id: 2, nome: "Teclado", preco: 99.9, quantidade: 5 },
+  { id: 3, nome: "Monitor", preco: 799.9, quantidade: 2 },
+  { id: 4, nome: "Cabo HDMI", preco: 29.9, quantidade: 30 },
+  { id: 5, nome: "Pen Drive", preco: 49.9, quantidade: 0 },
+  { id: 6, nome: "Webcam", preco: 199.9, quantidade: 4 },
+  { id: 7, nome: "SSD 240GB", preco: 299.9, quantidade: 6 },
+  { id: 8, nome: "HD Externo", preco: 499.9, quantidade: 3 },
+  { id: 9, nome: "Notebook", preco: 3499.9, quantidade: 1 },
+  { id: 10, nome: "Suporte de Notebook", preco: 89.9, quantidade: 0 }
+];
 
 
+const buscarProduto = () => {
 
-
-function carregarFilmes() {
-  fetch("https://rafaelescalfoni.github.io/desenv_web/filmes.json")
-    .then(res => res.json())
-    .then(data => {
-      console.log(data); 
-      data.forEach(filme => {
-        criarCardFilme(filme);
-      });
-    })
-    .catch(erro => console.error("Erro ao carregar os filmes:", erro));
 }
 
-function faixaEtariaClasse(idade) {
-  if (idade <= 14) return 'verde';
-  if (idade < 18) return 'amarelo';
-  return 'vermelho';
+const listarProdutos = () => {
+
 }
 
-function criarCardFilme(filme) {
-  const div = document.createElement("div");
-  div.classList.add("filme");
+const mostrarNomes = () => {
 
-  div.innerHTML = `
-    <img src="${filme.figura}" alt="${filme.titulo}">
-    <div class="conteudo">
-      <span class="classificacao ${faixaEtariaClasse(filme.classificacao)}">
-        ${filme.classificacao} anos
-      </span>
-      <h2>${filme.titulo}</h2>
-      <p>${filme.resumo}</p>
-      <p><strong>Gêneros:</strong> ${filme.generos.join(", ")}</p>
-      <p><strong>Elenco:</strong> ${filme.elenco.join(", ")}</p>
-      <p><strong>Opiniões:</strong></p>
-      <ul>
-        ${filme.opinioes.map(op => `<li>${op.descricao} - Nota: ${op.nota}</li>`).join("")}
-      </ul>
-    </div>
-  `;
-  
-  catalogo.appendChild(div);
 }
 
-carregarFilmes();
+const calcularTotal = () => {
+
+}
+
+const verificarEsgotados = () => {
+
+}
+
+const verificarPrecos = () => {
+
+}
