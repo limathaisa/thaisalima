@@ -1,0 +1,74 @@
+let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+const produtosContainer = document.getElementById("produtos");
+const listaCarrinho = document.getElementById("lista-carrinho");
+const totalElement = document.getElementById("total");
+const contador = document.getElementById("contador");
+const limparBtn = document.getElementById("limpar");
+
+// Carregar produtos do JSON
+fetch("itens.json")
+  .then(res => res.json())
+  .then(produtos => {
+    produtos.forEach(prod => {
+      const div = document.createElement("div");
+      div.classList.add("produto");
+
+      div.innerHTML = `
+        <img src="${prod.img}" alt="${prod.nome}">
+        <h3>${prod.nome}</h3>
+        <p>R$ ${prod.preco.toFixed(2)}</p>
+        <button onclick="adicionarCarrinho(${prod.id}, '${prod.nome}', ${prod.preco})">Adicionar</button>
+      `;
+
+      produtosContainer.appendChild(div);
+    });
+  });
+
+// Adicionar ao carrinho
+function adicionarCarrinho(id, nome, preco) {
+  carrinho.push({ id, nome, preco });
+  salvarCarrinho();
+  renderizarCarrinho();
+}
+
+// Remover do carrinho
+function removerCarrinho(index) {
+  carrinho.splice(index, 1);
+  salvarCarrinho();
+  renderizarCarrinho();
+}
+
+// Esvaziar carrinho
+limparBtn.addEventListener("click", () => {
+  carrinho = [];
+  salvarCarrinho();
+  renderizarCarrinho();
+});
+
+// Salvar no LocalStorage
+function salvarCarrinho() {
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+}
+
+// Renderizar carrinho
+function renderizarCarrinho() {
+  listaCarrinho.innerHTML = "";
+  let total = 0;
+
+  carrinho.forEach((item, index) => {
+    total += item.preco;
+    const li = document.createElement("li");
+    li.innerHTML = `
+      ${item.nome} - R$ ${item.preco.toFixed(2)}
+      <button onclick="removerCarrinho(${index})">X</button>
+    `;
+    listaCarrinho.appendChild(li);
+  });
+
+  totalElement.innerText = total.toFixed(2);
+  contador.innerText = carrinho.length;
+}
+
+// Renderizar ao carregar
+renderizarCarrinho();
