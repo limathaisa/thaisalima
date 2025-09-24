@@ -1,0 +1,9 @@
+[
+  { "id": 1, "nome": "Café Espresso", "preco": 8, "img": "img/cafe.jpg" },
+  { "id": 2, "nome": "Capuccino", "preco": 12, "img": "img/capuccino.jpg" },
+  { "id": 3, "nome": "Suco de Laranja", "preco": 10, "img": "img/suco.jpg" },
+  { "id": 4, "nome": "Água Mineral", "preco": 6, "img": "img/agua.jpg" },
+  { "id": 5, "nome": "Fatia de Bolo", "preco": 12, "img": "img/bolo.jpg" },
+  { "id": 6, "nome": "Sanduíche Natural", "preco": 15, "img": "img/sanduiche.jpg" },
+  { "id": 7, "nome": "Croissant", "preco": 17, "img": "img/croissant.jpg" }
+]
