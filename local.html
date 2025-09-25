@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Teste LocalStorage</title>
+</head>
+<body>
+    <h1>Armazenado no localStorage</h1>
+    <h2> ainda tem alguns problemas, mas no geral vai</h2>
+  <label>Nome:</label><input id="nome" placeholder="Digite seu nome"><br>
+  <label>Idade:</label><input id="idade" placeholder="Digite sua idade"> <br>
+  <button onclick="salvar()">Salvar</button>
+  <button onclick="mostrar()">Mostrar</button>
+  <button onclick="remover()">Remover</button>
+  <button onclick="exibir()">exibir</button> 
+
+  <script>
+    function salvar() {
+      let idade = document.getElementById("idade").value;
+      localStorage.setItem("idade", idade);
+      let nome = document.getElementById("nome").value;
+      localStorage.setItem("nome", nome);
+      alert("Nome salvo! e idade salvas");
+    }
+
+    function mostrar() {
+      let nome = localStorage.getItem("nome");
+      let idade = localStorage.getItem("idade");
+      alert("Nome e idade armazenados: " + nome + idade);
+    
+
+    }
+
+    function remover() {
+      localStorage.removeItem("nome");
+      localStorage.removeItem("idade");
+      alert("Nome e idade removidos!");
+      
+    }
+
+
+    function exibir(){
+        let nome = document.getElementById("nome").value
+        let idade = document.getElementById("idade").value
+
+        if (nome != null && idade != null) {
+        let p1 = document.createElement("p");
+        p1.innerText = "Nome armazenado: " + nome;
+        document.body.appendChild(p1); // adiciona no body
+
+        let p2 = document.createElement("p");
+        p2.innerText = "Idade armazenada: " + idade;
+        document.body.appendChild(p2); // adiciona no body
+}
+
+
+    }
+  </script>
+  <style>
+
+h1 {
+    background-color: rgb(2, 2, 184);
+    color: rgb(255, 255, 255);
+}
+
+body {
+    background-color: rgb(160, 177, 255);
+}
+
+button {
+    background-color: aliceblue;
+}
+
+p{
+    background-color: aliceblue;
+    color: rgb(2, 2, 134);
+}
+
+
+  </style>
+</body>
+</html>
+
